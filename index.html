@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Goin</title>
+<script
+src="http://maps.googleapis.com/maps/api/js">
+</script>
+
+<script>
+var myCenter=new google.maps.LatLng(9.9413686,78.1272232);
+
+function initialize()
+{
+var mapProp = {
+  center:myCenter,
+  zoom:12,
+
+  mapTypeId:google.maps.MapTypeId.ROADMAP
+  };
+
+var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+
+var marker=new google.maps.Marker({
+  position:myCenter,
+  icon: "pin1.png"
+  });
+
+marker.setMap(map);
+
+var infowindow = new google.maps.InfoWindow({
+  content:"Hello World!"
+  });
+google.maps.event.addListener(marker, 'click', function() {
+infowindow.open(map,marker);
+});
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+</head>
+
+<body>
+
+<div> 
+	<p>
+		Menu Header 
+	</p>
+</div>	
+
+<div id="googleMap" style="width:950px;height:620px;"></div>
+
+</body>
+</html>
